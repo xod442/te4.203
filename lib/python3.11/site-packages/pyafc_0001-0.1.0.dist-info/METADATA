@@ -1,0 +1,74 @@
+Metadata-Version: 2.1
+Name: pyafc-0001
+Version: 0.1.0
+Summary: Aruba Fabric Composer Python Modules
+Home-page: https://github.com/xod442/dev-pyafc
+Author: Aruba Automation
+Author-email: rick@rickkauffman.com
+License: MIT
+Keywords: networking aruba afc aos-cx switch rest api python
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: System Administrators
+Classifier: Topic :: System :: Networking
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+Requires-Dist: PyYAML
+Requires-Dist: netaddr
+
+# pyafc
+
+This python binding is written for Aruba Fabric Composer v6.3 or later
+
+See the [Release Notes](RELEASE-NOTES.md) for more information.
+
+
+## Structure
+* REST API call functions are found in the modules in /pyafc.
+* REST API call functions are combined into other functions that emulate low-level processes. These low-level process functions are also placed in files in /pyafc.
+* Functions from the /pyafc files (API functions and low-level functions) are combined to emulate larger network configuration processes (workflows). These workflow scripts stored in the /workflows folder.
+
+
+## How to contribute
+
+Please see the accompanying [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to contribute to this repository.
+
+## Git Workflow
+
+This repo adheres to the 'shared repo' git workflow:
+1. Clone the repo to a local machine:
+
+    ```git clone <repo_URL>```
+2. Checkout a local working branch:
+
+    ```git checkout -b <local_working_branch_name>```
+3. Add and amend files in the local working branch:
+
+    ```git add <file_name>```
+4. Commit regularly. Each commit should encompass a single logical change to the repo (e.g. adding a new function in /pyaoscx is one commit; writing docstrings for all functions in a module is another commit). Include an explanatory message with each commit:
+
+    ```git commit -m "<Clear_explanation_of_commit_here>"```
+5. Push commits to github.hpe.com:
+
+    ```git push origin <local_working_branch_name>```
+6. Merge changes using a Pull Request on github.hpe.com. Ensure the PR has a relevant title and additional comments if necessary. PRs should be raised regularly once code is tested and the user satisfied that it is ready for submission. Do not put off creaing a PR until a whole project is complete. The larger the PR, the difficult it is to successfully merge.
+
+## Troubleshooting Issues
+1. If you encounter module import errors, make sure that the package has been installed correctly.
+
+Additionally, please read the RELEASE-NOTES.md file for the current release information and known issues.
+
+
+## How to run workflow 
+pip install -r requirements.txt
+
+1. $ python3 wf01_setup_fabric_discover_devices.py input.json
+2. $ python3 wf02_expand_fabric.py input.json
+3. $ python3 wf09_delete_fabric_and_all_configurations.py input.json
+4. $ python3 wf03_micro_segmentation.py input-micro-segmentation.json
+5. $ python3 wf04_micro_segmentation_validation.py input-micro-segmentation.json
+6. $ python3 wf08_cleanup_micro_segmentation.py input-micro-segmentation.json
+3. $ python3 wf09_delete_fabric_and_all_configurations.py input.json
